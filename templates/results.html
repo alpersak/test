@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Plaka ve Hasar Tespiti Sonuçları</title>
+    <style>
+      .image-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+      .no-bullet {
+        list-style-type: none;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center; margin-top: 50px;">
+      <h1>Plaka ve Hasar Tespiti Sonuçları</h1>
+      {% for result in results %}
+        <div class="image-container">
+          <div>
+            <h2>Tespit Edilen Plakalar:</h2>
+            <img src="{{ url_for('static', filename='uploads/' + result.plate_image_file) }}" alt="Plaka Tespit Edilmiş Görüntü" style="max-width: 400px; height: auto;">
+            <ul class="no-bullet">
+              {% for plate in result.plates %}
+                <li>{{ plate }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div>
+            <h2>Tespit Edilen Hasarlar:</h2>
+            <img src="{{ url_for('static', filename='uploads/' + result.damage_image_file) }}" alt="Hasar Tespit Edilmiş Görüntü" style="max-width: 400px; height: auto;">
+            <ul class="no-bullet">
+              {% for damage in result.damages %}
+                <li>{{ damage }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+      <br><br>
+      <a href="/">Yeni Resim Yükle</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Plaka ve Hasar Tespiti</title>
+  </head>
+  <body>
+    <div style="text-align: center; margin-top: 50px;">
+      <h1>Plaka Tanıma ve Hasar Tespiti Sistemi</h1>
+      {% if error %}
+        <p style="color: red;">{{ error }}</p>
+      {% endif %}
+      <form action="/detect" method="post" enctype="multipart/form-data">
+        <input type="file" name="images" accept="image/*" multiple>
+        <br><br>
+        <input type="submit" value="Yükle ve Tespit Et">
+      </form>
+    </div>
+  </body>
+</html>
